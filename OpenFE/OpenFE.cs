@@ -44,7 +44,7 @@ namespace OpenFE
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			font = new Font(Content.Load<Texture2D>("sheet_white"));
+			font = new Font(Content.Load<Texture2D>("sheet_white"), Content.Load<Texture2D>("battle_numbers"));
 		}
 
 		/// <summary>

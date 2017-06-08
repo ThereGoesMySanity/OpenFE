@@ -38,7 +38,8 @@ namespace OpenFE
 		public void Draw(SpriteBatch spriteBatch, int destX, int destY)
 		{
 			spriteBatch.Draw(frames,
-						new Rectangle(OpenFE.guiScale(destX, destY, 1, guiAnim), OpenFE.guiScale(width, height, 1, guiAnim)),
+						new Rectangle(OpenFE.guiScale(destX, destY, 1, guiAnim), 
+			                          OpenFE.guiScale(width, height, 1, guiAnim)),
 						new Rectangle(x + currentFrame * width, y, width, height), Color.White);
 		}
 	}

@@ -11,17 +11,19 @@ namespace OpenFE
 	public class Font
 	{
 		public Texture2D font;
+		public Texture2D numbers;
 		private Dictionary<char, Tuple<Point, int>> textLoc;    //character: (location, kerning)
 		private Point size;
-		public Font(Texture2D font)
+		public Font(Texture2D font, Texture2D num)
 		{
 			this.font = font;
+			numbers = num;
 			size = new Point(10, 16);
 			textLoc = new Dictionary<char, Tuple<Point, int>>();
 			using (StreamReader sr = new StreamReader("Content/chars.dat"))
 			{
 				string s = sr.ReadLine();
-				int[] kerning = s.ToCharArray().Select(a => a - 48).ToArray();    //char array to int array
+				int[] kerning = s.ToCharArray().Select(a => a - '0').ToArray();    //char array to int array
 				for (int i = 0; (s = sr.ReadLine()) != null; i++)
 				{
 					for (int j = 0; j < s.Length; j++)
@@ -39,11 +41,20 @@ namespace OpenFE
 			int offset = 0;
 			foreach (char c in text)
 			{
+				if (!textLoc.ContainsKey(c)) break;
 				if (c == 'j') offset -= 1;  //j has an underhang(? don't know what to call it)
 				spriteBatch.Draw(font, new Rectangle(OpenFE.guiScale(x+offset,y,0.5f), OpenFE.guiScale(size, 0.5f)), 
 				                 new Rectangle(textLoc[c].Item1, size), Color.White);
 				offset += textLoc[c].Item2;
 			}
+		}
+		public void DrawNumbers(string text, int x, int y, SpriteBatch spriteBatch)
+		{
+			if (text.ToCharArray().Min() < '0' || text.ToCharArray().Max() > '9')
+			{
+				throw new ArgumentException("Non-number character in text");
+			}
+
 		}
 	}
 }

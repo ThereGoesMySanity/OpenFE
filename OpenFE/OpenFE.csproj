@@ -50,6 +50,12 @@
     <None Include="Content\chars.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\battle_numbers.png" />
+    <None Include="Content\BlankBattles.png" />
+    <None Include="Content\FE8_Battle_Icons.png" />
+    <None Include="Content\icons.png" />
+    <None Include="Content\sheet_white.png" />
+    <None Include="Content\test.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
