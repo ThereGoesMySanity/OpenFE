@@ -1,9 +1,10 @@
 ﻿using System;
 namespace OpenFE
 {
+	public enum GameStates { MenuState, MapState, BattleState }
 	public class GameState
 	{
-		public enum GameStates { MenuState, MapState, BattleState };
+		
 		public GameState()
 		{
 		}

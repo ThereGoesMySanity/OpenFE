@@ -44,7 +44,7 @@ namespace OpenFE
 				if (!textLoc.ContainsKey(c)) break;
 				if (c == 'j') offset -= 1;  //j has an underhang(? don't know what to call it)
 				spriteBatch.Draw(font, new Rectangle(OpenFE.guiScale(x+offset,y,0.5f), OpenFE.guiScale(size, 0.5f)), 
-				                 new Rectangle(textLoc[c].Item1, size), Color.White);
+				                 	   new Rectangle(textLoc[c].Item1, size), Color.White);
 				offset += textLoc[c].Item2;
 			}
 		}
@@ -54,7 +54,11 @@ namespace OpenFE
 			{
 				throw new ArgumentException("Non-number character in text");
 			}
-
+			for (int i = 0; i < text.Length; i++)
+			{
+				spriteBatch.Draw(numbers, new Rectangle(OpenFE.guiScale(x+8*i,y), OpenFE.guiScale(8,8)), 
+				                 		  new Rectangle(x+8*text[i]-'0', 0, 8, 8), Color.White);
+			}
 		}
 	}
 }

@@ -13,9 +13,9 @@ namespace OpenFE
 		{
 
 		}
-		public void DrawGUIBattle(SpriteBatch spriteBatch)
+		public void DrawGUIBattle(SpriteBatch spriteBatch, Unit one, Unit two)
 		{
-
+			//TODO: draw gui
 		}
 	}
 }

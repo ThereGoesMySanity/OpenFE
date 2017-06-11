@@ -35,6 +35,9 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="DynamicLua">
+      <HintPath>..\packages\DynamicLua.1.1.2.0\lib\net40-Client\DynamicLua.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OpenFE.cs" />
@@ -44,6 +47,16 @@
     <Compile Include="Graphics\Font.cs" />
     <Compile Include="Graphics\GUI.cs" />
     <Compile Include="Graphics\GameState.cs" />
+    <Compile Include="GameLogic\Unit.cs" />
+    <Compile Include="GameLogic\Dialog.cs" />
+    <Compile Include="GameLogic\Campaign.cs" />
+    <Compile Include="GameLogic\ItemLot.cs" />
+    <Compile Include="GameLogic\Skill.cs" />
+    <Compile Include="Map\Map.cs" />
+    <Compile Include="Map\Terrain.cs" />
+    <Compile Include="GameLogic\Stat.cs" />
+    <Compile Include="GameLogic\Weapon.cs" />
+    <Compile Include="GameLogic\RNG.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -56,6 +69,7 @@
     <None Include="Content\icons.png" />
     <None Include="Content\sheet_white.png" />
     <None Include="Content\test.png" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -100,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\" />
+    <Folder Include="Map\" />
+    <Folder Include="GameLogic\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

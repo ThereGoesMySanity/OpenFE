@@ -6,21 +6,25 @@ using Microsoft.Xna.Framework.Input;
 
 namespace OpenFE
 {
+	
 	/// <summary>
 	/// This is the main type for your game.
 	/// </summary>
 	public class OpenFE : Game
 	{
+		public const int SCALE = 4;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		Font font;
-		public const int GUI_SCALE = 4;
+		GUI gui;
+		RNG rand;
+		public int RNG {get{return rand.Get();}}
 
 		public OpenFE()
 		{
 			graphics = new GraphicsDeviceManager(this);
-			graphics.PreferredBackBufferWidth = 960;
-			graphics.PreferredBackBufferHeight = 640;
+			graphics.PreferredBackBufferWidth = 240*SCALE;
+			graphics.PreferredBackBufferHeight = 160*SCALE;
 			Content.RootDirectory = "Content";
 		}
 
@@ -33,7 +37,7 @@ namespace OpenFE
 		protected override void Initialize()
 		{
 			base.Initialize();
-
+			rand = new RNG(true);
 		}
 
 		/// <summary>
@@ -82,13 +86,13 @@ namespace OpenFE
 		public static Point guiScale(Point p, float scale = 1, bool gui = true)
 		{
 			if (!gui) return p;
-			return new Point((int)(p.X * GUI_SCALE * scale), (int)(p.Y * GUI_SCALE * scale));
+			return new Point((int)(p.X * SCALE * scale), (int)(p.Y * SCALE * scale));
 		}
 		public static Point guiScale(int x, int y, float scale = 1, bool gui = true)
 		{
 			Contract.Ensures(Contract.Result<Point>() != null);
 			if (!gui) return new Point(x,y);
-			return new Point((int)(x * GUI_SCALE * scale), (int)(y * GUI_SCALE * scale));
+			return new Point((int)(x * SCALE * scale), (int)(y * SCALE * scale));
 		}
 	}
 }
