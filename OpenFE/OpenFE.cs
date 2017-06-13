@@ -19,6 +19,7 @@ namespace OpenFE
 		GUI gui;
 		public static RNG rand;
 		public int RNG {get{return rand.Get();}}
+		Battle b;
 
 		public OpenFE()
 		{
@@ -38,6 +39,7 @@ namespace OpenFE
 		{
 			base.Initialize();
 			rand = new RNG(true);
+			b = new Battle(new Unit("Bob", "Sword"), new Unit("Bob", "Sword"), new Terrain("Grass"), new Terrain("Grass"));
 		}
 
 		/// <summary>

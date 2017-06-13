@@ -8,7 +8,14 @@ namespace OpenFE
 {
 	public class Weapon
 	{
-		public static Dictionary<string, string> WeaponType;
+		public static Dictionary<string, string> WeaponType = new Dictionary<string, string>
+		{
+			["Sword"] = "Red",
+			["Lance"] = "Blue",
+			["Axe"] = "Green",
+			["Bow"] = "Green",
+			["Staff"] = ""
+		};
 		public string Name { get; set; }
 		public string Type { get; set; }
 		public string DamageType { get; set; }
@@ -21,15 +28,7 @@ namespace OpenFE
 		public Weapon(string file, string script = null)
 		{
 			Range = new bool[] { false, false, false, false };
-			WeaponType = new Dictionary<string, string>
-			{
-				["Sword"] = "Red",
-				["Lance"] = "Blue",
-				["Axe"] = "Green",
-				["Bow"] = "Green",
-				["Staff"] = ""
-			};
-			using (StreamReader sr = new StreamReader(file))
+			using (StreamReader sr = new StreamReader("Scripts/Weapons/"+file+".txt"))
 			{
 				Name = sr.ReadLine();
 				Type = sr.ReadLine();
@@ -62,9 +61,10 @@ namespace OpenFE
 				{
 					Range[i] = s[i - 1] == '1';
 				}
-				for (int i = 0; i < 4; i++)
+				Stats = new Dictionary<string, int>();
+				sr.ReadLine();
+				while (!sr.EndOfStream)
 				{
-					sr.ReadLine();
 					string[] ss = sr.ReadLine().Split(' ');
 					Stats.Add(ss[0], Int32.Parse(ss[1]));
 				}

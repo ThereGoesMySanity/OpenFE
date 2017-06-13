@@ -10,7 +10,7 @@ namespace OpenFE
 		{
 		}
 
-		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+		public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Font f, GUI gui)
 		{
 			throw new NotImplementedException();
 		}

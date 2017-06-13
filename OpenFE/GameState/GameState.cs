@@ -7,6 +7,6 @@ namespace OpenFE
 	public interface GameState
 	{
 		void Update(GameTime gameTime);
-		void Draw(SpriteBatch spriteBatch, GameTime gameTime, GUI gui);
+		void Draw(SpriteBatch spriteBatch, GameTime gameTime, Font f, GUI gui);
 	}
 }

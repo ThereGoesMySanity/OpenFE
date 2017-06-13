@@ -12,9 +12,9 @@ namespace OpenFE
 			battle = b;
 		}
 
-		public void Draw(SpriteBatch spriteBatch, GameTime gameTime, GUI gui)
+		public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Font f, GUI gui)
 		{
-			gui.DrawGUIBattle(spriteBatch, battle);
+			gui.DrawGUIBattle(spriteBatch, f, battle);
 		}
 
 		public void Update(GameTime gameTime)

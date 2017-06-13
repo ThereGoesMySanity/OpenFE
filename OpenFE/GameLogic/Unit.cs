@@ -35,7 +35,7 @@ namespace OpenFE
 		public int GetCrit()
 		{
 			//TODO: critical bonus
-			return Weapon.Stats["Crit"] + 
+			return Weapon.Stats["Crt"] + 
 				         Stats["Skl"].getValue() / 2 + 
 				         Proficiency[Weapon.Type] >= 251 ? 5 : 0;
 		}
@@ -46,7 +46,7 @@ namespace OpenFE
 				return Math.Max(0, Stats["Spd"].getValue() - Math.Max(0, Weapon.Stats["Wt"] - Stats["Con"].getValue()));
 			}
 		}
-		public Unit(string file)
+		public Unit(string file, string weapon)
 		{
 			Stats = new Dictionary<string, Stat>();
 			Proficiency = new Dictionary<string, int>();
@@ -54,7 +54,7 @@ namespace OpenFE
 			{
 				Proficiency.Add(w, 0);
 			}
-			using (StreamReader sr = new StreamReader(file))
+			using (StreamReader sr = new StreamReader("Scripts/Units/" + file + ".txt"))
 			{
 				Name = sr.ReadLine();
 				ClassName = sr.ReadLine();
@@ -62,13 +62,14 @@ namespace OpenFE
 				for (int i = 0; i < 2; i++)
 				{
 					string[] ss = sr.ReadLine().Split(' ');
-					while (ss.Length>1)
+					while (ss[0] != "[Growth")
 					{
 						if (StatType.Contains(ss[0]))
 						{
 							switch (i)
 							{
 								case 0:
+									Console.WriteLine(ss);
 									Stats.Add(ss[0], 
 									          new Stat(ss[0], Int32.Parse(ss[1])));
 									break;
@@ -77,11 +78,13 @@ namespace OpenFE
 									break;
 							}
 						}
+						if(i == 1) break;
 						ss = sr.ReadLine().Split(' ');
 					}
 				}
 			}
 			HP = Stats["HP"].Value;
+			Weapon = new Weapon(weapon);
 		}
 		public void addSkill(Skill s)
 		{

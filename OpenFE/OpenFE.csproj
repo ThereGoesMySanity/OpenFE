@@ -76,12 +76,24 @@
     <None Include="Content\test.png" />
     <None Include="packages.config" />
     <None Include="Content\hp.png" />
-    <None Include="Scripts\Terrain\ExampleTerrain.txt" />
-    <None Include="Scripts\Units\ExampleUnit.txt" />
-    <None Include="Scripts\Weapons\ExampleWeapon.txt" />
-    <None Include="Scripts\Terrain\Grass.txt" />
-    <None Include="Scripts\Units\Bob.txt" />
-    <None Include="Scripts\Weapons\ExampleWeapon %28copy%29.txt" />
+    <None Include="Scripts\Terrain\ExampleTerrain.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Units\ExampleUnit.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Weapons\ExampleWeapon.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Terrain\Grass.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Units\Bob.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Weapons\Sword.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />

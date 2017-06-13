@@ -14,6 +14,7 @@ namespace OpenFE
 		{
 			Type = type;
 			Value = val;
+			Mods = new List<Modifier>();
 		}
 		/// <summary>
 		/// Returns value including mods.

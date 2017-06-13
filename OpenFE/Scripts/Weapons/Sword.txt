@@ -1,5 +1,5 @@
 Shit Sword
-Sword           
+Sword
 Str
 E
 100
