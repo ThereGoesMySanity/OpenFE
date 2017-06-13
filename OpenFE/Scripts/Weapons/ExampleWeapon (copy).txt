@@ -1,0 +1,10 @@
+Shit Sword
+Sword           
+Str
+E
+100
+[Stats]
+Wt 1
+Mt 2
+Hit 100
+Crt 1

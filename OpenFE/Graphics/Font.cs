@@ -30,23 +30,33 @@ namespace OpenFE
 					{
 						if (!textLoc.ContainsKey(s[j]))
 						{
-							textLoc.Add(s[j], new Tuple<Point, int>(new Point(10*j, 16*i), kerning[i*17+j]));
+							textLoc.Add(s[j], new Tuple<Point, int>(new Point(10 * j, 16 * i), kerning[i * 17 + j]));
 						}
 					}
 				}
 			}
 		}
-		public void drawText(string text, int x, int y, SpriteBatch spriteBatch)
+		public void DrawText(string text, int x, int y, SpriteBatch spriteBatch)
 		{
 			int offset = 0;
 			foreach (char c in text)
 			{
 				if (!textLoc.ContainsKey(c)) break;
 				if (c == 'j') offset -= 1;  //j has an underhang(? don't know what to call it)
-				spriteBatch.Draw(font, new Rectangle(OpenFE.guiScale(x+offset,y,0.5f), OpenFE.guiScale(size, 0.5f)), 
-				                 	   new Rectangle(textLoc[c].Item1, size), Color.White);
+				spriteBatch.Draw(font,
+							   new Rectangle(OpenFE.guiScale(x + offset, y, 0.5f), OpenFE.guiScale(size, 0.5f)),
+								 new Rectangle(textLoc[c].Item1, size), Color.White);
 				offset += textLoc[c].Item2;
 			}
+		}
+		public int TextSize(string text)
+		{
+			int i = 0;
+			foreach (char c in text)
+			{
+				i += textLoc[c].Item2;
+			}
+			return i;
 		}
 		public void DrawNumbers(string text, int x, int y, SpriteBatch spriteBatch)
 		{
@@ -56,9 +66,35 @@ namespace OpenFE
 			}
 			for (int i = 0; i < text.Length; i++)
 			{
-				spriteBatch.Draw(numbers, new Rectangle(OpenFE.guiScale(x+8*i,y), OpenFE.guiScale(8,8)), 
-				                 		  new Rectangle(x+8*text[i]-'0', 0, 8, 8), Color.White);
+				spriteBatch.Draw(numbers,
+								 new Rectangle(OpenFE.guiScale(x + 8 * i, y), OpenFE.guiScale(8, 8)),
+								 new Rectangle(x + 8 * (text[i] - '0'), 0, 8, 8), Color.White);
 			}
 		}
+		public void DrawNumbersLeft(string text, int x, int y, SpriteBatch spriteBatch)
+		{
+			if (text.ToCharArray().Min() < '0' || text.ToCharArray().Max() > '9')
+			{
+				throw new ArgumentException("Non-number character in text");
+			}
+			for (int i = 0; i < text.Length; i++)
+			{
+				spriteBatch.Draw(numbers,
+								 new Rectangle(OpenFE.guiScale(x - 8 * (text.Length - i), y), OpenFE.guiScale(8, 8)),
+								 new Rectangle(x + 8 * (text[i] - '0'), 0, 8, 8), Color.White);
+
+			}
+		}
+		public void DrawNumbers(int num, int x, int y, SpriteBatch spriteBatch)
+		{
+			string text = num.ToString();
+			DrawNumbers(text, x, y, spriteBatch);
+		}
+		public void DrawNumbersLeft(int num, int x, int y, SpriteBatch spriteBatch)
+		{
+			string text = num.ToString();
+			DrawNumbersLeft(text, x, y, spriteBatch);
+		}
+
 	}
 }

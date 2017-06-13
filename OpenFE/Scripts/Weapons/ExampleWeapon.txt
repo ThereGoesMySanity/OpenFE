@@ -1,0 +1,10 @@
+Weapon Name     //delete all comments if you make a copy of this
+Sword           
+Str				//str for physical damage, mag for magic damage. if it's a tome, add an extra line denoting what damage color it is
+E
+100             // range, 100 would be 1, 111 would be 1~3, 010 would be 2, etc.
+[Stats]
+Wt 1
+Mt 2
+Hit 100
+Crt 100

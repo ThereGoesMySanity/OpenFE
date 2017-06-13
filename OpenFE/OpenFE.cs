@@ -17,7 +17,7 @@ namespace OpenFE
 		SpriteBatch spriteBatch;
 		Font font;
 		GUI gui;
-		RNG rand;
+		public static RNG rand;
 		public int RNG {get{return rand.Get();}}
 
 		public OpenFE()
@@ -48,7 +48,11 @@ namespace OpenFE
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			font = new Font(Content.Load<Texture2D>("sheet_white"), Content.Load<Texture2D>("battle_numbers"));
+			font = new Font(Content.Load<Texture2D>("sheet_white"), 
+			                Content.Load<Texture2D>("battle_numbers"));
+			gui = new GUI(Content.Load<Texture2D>("BlankBattles"), 
+			              Content.Load<Texture2D>("hp"), 
+			              Content.Load<Texture2D>("icons"));
 		}
 
 		/// <summary>
@@ -78,20 +82,19 @@ namespace OpenFE
 		{
 			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-			font.drawText("I wonder if this senjenjgjce looks any good...", 0, 0, spriteBatch);
-			spriteBatch.End();
 
+			spriteBatch.End();
 			base.Draw(gameTime);
 		}
 		public static Point guiScale(Point p, float scale = 1, bool gui = true)
 		{
-			if (!gui) return p;
+			if (!gui) return (p.ToVector2()*scale).ToPoint();
 			return new Point((int)(p.X * SCALE * scale), (int)(p.Y * SCALE * scale));
 		}
 		public static Point guiScale(int x, int y, float scale = 1, bool gui = true)
 		{
 			Contract.Ensures(Contract.Result<Point>() != null);
-			if (!gui) return new Point(x,y);
+			if (!gui) return new Point((int)(x * scale), (int)(y * scale));
 			return new Point((int)(x * SCALE * scale), (int)(y * SCALE * scale));
 		}
 	}

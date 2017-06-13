@@ -1,0 +1,10 @@
+Name
+[Bonus]
+Avo 10
+Def 10
+HP 10
+[MovementCost]
+Light 1
+Med 2
+Heavy -1      //-1 means can't move on to tile
+Fly 1

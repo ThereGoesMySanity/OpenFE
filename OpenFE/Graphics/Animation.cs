@@ -12,8 +12,8 @@ namespace OpenFE
 		int rate;
 		int rateTimer = 0;
 		int x, y, width, height, frameCount;
-		public Animation(Texture2D img, int width, int height = 0, int frameCount = 0, 
-		                 int x = 0, int y = 0, int rate = 1, bool guiAnim = false)
+		public Animation(Texture2D img, int width, int height = 0,bool guiAnim = false, int frameCount = 0, 
+		                 int x = 0, int y = 0, int rate = 1)
 		{
 			/*just img and width: assumes each frame is the height of the image and only one row
 			 * add height: changes height of each frame, only one row

@@ -8,8 +8,8 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>OpenFE</RootNamespace>
     <AssemblyName>OpenFE</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,8 +35,8 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="DynamicLua">
-      <HintPath>..\packages\DynamicLua.1.1.2.0\lib\net40-Client\DynamicLua.dll</HintPath>
+    <Reference Include="MoonSharp.Interpreter">
+      <HintPath>..\packages\MoonSharp.2.0.0.0\lib\net40-client\MoonSharp.Interpreter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +46,6 @@
     <Compile Include="Graphics\Animation.cs" />
     <Compile Include="Graphics\Font.cs" />
     <Compile Include="Graphics\GUI.cs" />
-    <Compile Include="Graphics\GameState.cs" />
     <Compile Include="GameLogic\Unit.cs" />
     <Compile Include="GameLogic\Dialog.cs" />
     <Compile Include="GameLogic\Campaign.cs" />
@@ -57,6 +56,12 @@
     <Compile Include="GameLogic\Stat.cs" />
     <Compile Include="GameLogic\Weapon.cs" />
     <Compile Include="GameLogic\RNG.cs" />
+    <Compile Include="GameLogic\Modifier.cs" />
+    <Compile Include="GameState\GameState.cs" />
+    <Compile Include="GameState\MenuState.cs" />
+    <Compile Include="GameState\MapState.cs" />
+    <Compile Include="GameState\BattleState.cs" />
+    <Compile Include="GameLogic\Battle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -70,6 +75,13 @@
     <None Include="Content\sheet_white.png" />
     <None Include="Content\test.png" />
     <None Include="packages.config" />
+    <None Include="Content\hp.png" />
+    <None Include="Scripts\Terrain\ExampleTerrain.txt" />
+    <None Include="Scripts\Units\ExampleUnit.txt" />
+    <None Include="Scripts\Weapons\ExampleWeapon.txt" />
+    <None Include="Scripts\Terrain\Grass.txt" />
+    <None Include="Scripts\Units\Bob.txt" />
+    <None Include="Scripts\Weapons\ExampleWeapon %28copy%29.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -116,6 +128,10 @@
     <Folder Include="Graphics\" />
     <Folder Include="Map\" />
     <Folder Include="GameLogic\" />
+    <Folder Include="GameState\" />
+    <Folder Include="Scripts\Units\" />
+    <Folder Include="Scripts\Terrain\" />
+    <Folder Include="Scripts\Weapons\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

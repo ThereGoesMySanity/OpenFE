@@ -1,0 +1,10 @@
+Grass
+[Bonus]
+Avo 0
+Def 0
+HP 0
+[MovementCost]
+Light 1
+Med 1
+Heavy 1
+Fly 1

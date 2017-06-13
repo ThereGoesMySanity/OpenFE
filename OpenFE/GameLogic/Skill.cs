@@ -1,67 +1,42 @@
 ﻿using System;
-using DynamicLua;
+using MoonSharp.Interpreter;
+
 namespace OpenFE
 {
 	public class Skill
 	{
-		string script;
-		public dynamic lua;
+		public Script lua;
 		public Skill(string scriptFile)
 		{
-			lua = new DynamicLua.DynamicLua();
-			lua.NewTable("user");
-			script = scriptFile;
+			lua = new Script();
+			lua.DoFile(scriptFile);
 		}
 		public void onTurnStart()
 		{
-			lua("if onTurnStart~=nil then onTurnStart() end");
+			lua.DoString("if onTurnStart~=nil then onTurnStart() end");
 		}
 		public void onTurnEnd()
 		{
-            lua("if onTurnEnd~=nil then onTurnEnd() end");
+            lua.DoString("if onTurnEnd~=nil then onTurnEnd() end");
 		}
 		public void onAttack(Unit enemy)
 		{
-			dynamic foe;
-			if (lua("return enemy == nil"))
-			{
-				foe = lua.NewTable("enemy");
-			}
-			else
-			{
-				foe = lua.enemy;
-			}
+			DynValue foe = lua.Globals.Get("enemy");
 			enemy.loadIntoLua(foe);
-			lua("if onAttack~=nil then onAttack() end");
+			lua.DoString("if onAttack~=nil then onAttack() end");
 		}
 		public int calculateDamage(Unit enemy, bool attacker)
 		{
-			dynamic foe;
-			if (lua("return enemy == nil"))
-			{
-				foe = lua.NewTable("enemy");
-			}
-			else
-			{
-				foe = lua.enemy;
-			}
+			DynValue foe = lua.Globals.Get("enemy");
 			enemy.loadIntoLua(foe);
-			lua.attacker = attacker;
-			return lua("if calculateDamage~=nil then return calculateDamage(attacker) end");
+			lua.Globals.Set("attacker", DynValue.NewBoolean(attacker));
+			return (int)lua.DoString("if calculateDamage~=nil then return calculateDamage(attacker) end").Number;
 		}
 		public void onDefend(Unit enemy)
 		{
-			dynamic foe;
-			if (lua("return enemy == nil"))
-			{
-				foe = lua.NewTable("enemy");
-			}
-			else
-			{
-				foe = lua.enemy;
-			}
+			DynValue foe = lua.Globals.Get("enemy");
 			enemy.loadIntoLua(foe);
-			lua("if onDefend~=nil then onDefend() end");
+			lua.DoString("if onDefend~=nil then onDefend() end");
 		}
 	}
 }

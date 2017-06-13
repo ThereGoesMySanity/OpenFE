@@ -1,0 +1,27 @@
+Name             //delete all comments if you make a copy of this
+Class
+[Stats]
+HP 0
+Str 1
+Skl 2
+Spd 3
+Lck 4
+Def 5
+Res 6
+Mov 7
+Con 8
+[Growth Rates]    //0-100
+HP 0
+Str 10
+Skl 20
+Spd 30
+Lck 40
+Def 50
+Res 60
+[Proficiencies]     //if your character doesn't have proficiency in a weapon type, just delete the line
+Sword E
+Lance E
+Axe E
+Bow E
+Staff E
+Tome E

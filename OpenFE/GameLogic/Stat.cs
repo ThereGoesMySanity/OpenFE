@@ -1,16 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using MoonSharp.Interpreter;
+
 namespace OpenFE
 {
 	public class Stat
 	{
-		string type;
-		public int value, growth;
+		public string Type { get; set; }
+		public int Value { get; set; }
+		public int Growth { get; set; }
+		public List<Modifier> Mods { get; set; }
 		public Stat(string type, int val)
 		{
-			this.type = type;
-			value = val;
+			Type = type;
+			Value = val;
 		}
-
-
+		/// <summary>
+		/// Returns value including mods.
+		/// </summary>
+		public int getValue()
+		{
+			return Value + Modifier.Total(Mods);
+		}
 	}
 }
