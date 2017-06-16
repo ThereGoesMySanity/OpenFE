@@ -51,7 +51,7 @@
     <Compile Include="GameLogic\Campaign.cs" />
     <Compile Include="GameLogic\ItemLot.cs" />
     <Compile Include="GameLogic\Skill.cs" />
-    <Compile Include="Map\Map.cs" />
+    <Compile Include="Map\FEMap.cs" />
     <Compile Include="Map\Terrain.cs" />
     <Compile Include="GameLogic\Stat.cs" />
     <Compile Include="GameLogic\Weapon.cs" />
@@ -62,6 +62,8 @@
     <Compile Include="GameState\MapState.cs" />
     <Compile Include="GameState\BattleState.cs" />
     <Compile Include="GameLogic\Battle.cs" />
+    <Compile Include="GameState\Cutscene.cs" />
+    <Compile Include="Map\Tiled.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -94,6 +96,34 @@
     <None Include="Scripts\Weapons\Sword.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Maps\TestMap.tmx" />
+    <None Include="FE 6\Arcadia Temple.png" />
+    <None Include="FE 6\Bern Palace.png" />
+    <None Include="FE 6\Castle Blue.png" />
+    <None Include="FE 6\Castle Purple.png" />
+    <None Include="FE 6\Desert.png" />
+    <None Include="FE 6\Dragon Temple.png" />
+    <None Include="FE 6\Fort.png" />
+    <None Include="FE 6\Ice Temple.png" />
+    <None Include="FE 6\Light Tower.png" />
+    <None Include="FE 6\Overworld Bern.png" />
+    <None Include="FE 6\Overworld Missur Bridge.png" />
+    <None Include="FE 6\Overworld Nighttime.png" />
+    <None Include="FE 6\Overworld Regular.png" />
+    <None Include="FE 6\Overworld Regular.tsx" />
+    <None Include="FE 6\Overworld Snow.png" />
+    <None Include="FE 6\Sacae Castle.png" />
+    <None Include="FE 6\Sacae Overworld 1.png" />
+    <None Include="FE 6\Sacae Overworld 2.png" />
+    <None Include="FE 6\Shrine of Seals.png" />
+    <None Include="FE 6\Snow Castle.png" />
+    <None Include="FE 6\Thumbs.db" />
+    <None Include="FE 6\Village.png" />
+    <None Include="FE 6\Volcano.png" />
+    <None Include="FE 6\Western Isles Castle.png" />
+    <None Include="FE 6\Western Isles Overworld.png" />
+    <None Include="FE 6\Western Isles Village.png" />
+    <None Include="FE 6\Yellow Cave.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />

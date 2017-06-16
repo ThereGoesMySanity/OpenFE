@@ -19,7 +19,8 @@ namespace OpenFE
 		GUI gui;
 		public static RNG rand;
 		public int RNG {get{return rand.Get();}}
-		Battle b;
+		public static OpenFE Instance { get; private set; }
+		public GameState State { get; set; }
 
 		public OpenFE()
 		{
@@ -27,6 +28,7 @@ namespace OpenFE
 			graphics.PreferredBackBufferWidth = 240*SCALE;
 			graphics.PreferredBackBufferHeight = 160*SCALE;
 			Content.RootDirectory = "Content";
+			Instance = this;
 		}
 
 		/// <summary>
@@ -39,7 +41,7 @@ namespace OpenFE
 		{
 			base.Initialize();
 			rand = new RNG(true);
-			b = new Battle(new Unit("Bob", "Sword"), new Unit("Bob", "Sword"), new Terrain("Grass"), new Terrain("Grass"));
+			State = new MenuState();
 		}
 
 		/// <summary>
@@ -71,7 +73,7 @@ namespace OpenFE
 				Exit();
 #endif
 
-			// TODO: Add your update logic here
+			state.Update(gameTime);
 
 			base.Update(gameTime);
 		}
@@ -84,7 +86,7 @@ namespace OpenFE
 		{
 			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
+			state.Draw(spriteBatch, gameTime, font, gui);
 			spriteBatch.End();
 			base.Draw(gameTime);
 		}

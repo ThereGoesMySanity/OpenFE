@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Animations;
 
 namespace OpenFE
 {
@@ -46,12 +47,12 @@ namespace OpenFE
 			                 new Rectangle(0, sides[b.One.Type], 120, 160), Color.White);
 			spriteBatch.Draw(battleGUI, screen2,
 							 new Rectangle(120, sides[b.Two.Type], 120, 160), Color.White);
-			f.DrawNumbersLeft(b.Hit.Item1, 40, 112, spriteBatch);
-			f.DrawNumbersLeft(b.Crit.Item1, 40, 120, spriteBatch);
-			f.DrawNumbersLeft(b.Dmg.Item1, 40, 128, spriteBatch);
-			f.DrawNumbers(b.Hit.Item2, 238, 112, spriteBatch);
-			f.DrawNumbers(b.Crit.Item2, 238, 120, spriteBatch);
-			f.DrawNumbers(b.Dmg.Item2, 238, 128, spriteBatch);
+			f.DrawNumbersLeft(b.Hit.Item1, 39, 112, spriteBatch);
+			f.DrawNumbersLeft(b.Crit.Item1, 39, 120, spriteBatch);
+			f.DrawNumbersLeft(b.Dmg.Item1, 39, 128, spriteBatch);
+			f.DrawNumbersLeft(b.Hit.Item2, 237, 112, spriteBatch);
+			f.DrawNumbersLeft(b.Crit.Item2, 237, 120, spriteBatch);
+			f.DrawNumbersLeft(b.Dmg.Item2, 237, 128, spriteBatch);
 			f.DrawNumbersLeft(b.One.HP, 25, 145, spriteBatch);
 			f.DrawNumbersLeft(b.Two.HP, 145, 145, spriteBatch);
 			f.DrawText(b.One.Weapon.Name, 88 - f.TextSize(b.One.Weapon.Name)/2, 120, spriteBatch);
@@ -60,6 +61,7 @@ namespace OpenFE
 			DrawHP(b.Two.HP, b.Two.Stats["HP"].Value, 2, spriteBatch);
 			f.DrawText(b.One.Name, 28 - f.TextSize(b.One.Name)/2, 8, spriteBatch);
 			f.DrawText(b.Two.Name, 212 - f.TextSize(b.Two.Name)/2, 8, spriteBatch);
+
 			int adv = b.One.Weapon.advantage(b.Two.Weapon);
 			switch (adv)
 			{

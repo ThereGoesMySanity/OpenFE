@@ -36,16 +36,17 @@ namespace OpenFE
 				}
 			}
 		}
-		public void DrawText(string text, int x, int y, SpriteBatch spriteBatch)
+		public void DrawText(string text, int x, int y, SpriteBatch spriteBatch, Color? color = null)
 		{
+			if (color == null) color = Color.White;
 			int offset = 0;
 			foreach (char c in text)
 			{
 				if (!textLoc.ContainsKey(c)) break;
 				if (c == 'j') offset -= 1;  //j has an underhang(? don't know what to call it)
 				spriteBatch.Draw(font,
-							   new Rectangle(OpenFE.guiScale(x + offset, y, 0.5f), OpenFE.guiScale(size, 0.5f)),
-								 new Rectangle(textLoc[c].Item1, size), Color.White);
+							   new Rectangle(OpenFE.guiScale(x + offset, y), OpenFE.guiScale(size)),
+				                 new Rectangle(textLoc[c].Item1, size), color.Value);
 				offset += textLoc[c].Item2;
 			}
 		}
@@ -67,8 +68,8 @@ namespace OpenFE
 			for (int i = 0; i < text.Length; i++)
 			{
 				spriteBatch.Draw(numbers,
-								 new Rectangle(OpenFE.guiScale(x + 8 * i, y), OpenFE.guiScale(8, 8)),
-								 new Rectangle(x + 8 * (text[i] - '0'), 0, 8, 8), Color.White);
+								 new Rectangle(OpenFE.guiScale(x + 7 * i, y), OpenFE.guiScale(8, 8)),
+								 new Rectangle(8 * (text[i] - '0'), 0, 8, 8), Color.White);
 			}
 		}
 		public void DrawNumbersLeft(string text, int x, int y, SpriteBatch spriteBatch)
@@ -80,20 +81,19 @@ namespace OpenFE
 			for (int i = 0; i < text.Length; i++)
 			{
 				spriteBatch.Draw(numbers,
-								 new Rectangle(OpenFE.guiScale(x - 8 * (text.Length - i), y), OpenFE.guiScale(8, 8)),
-								 new Rectangle(x + 8 * (text[i] - '0'), 0, 8, 8), Color.White);
+								 new Rectangle(OpenFE.guiScale(x - 7 * (text.Length - i), y), 
+				                               OpenFE.guiScale(8, 8)),
+								 new Rectangle(8 * (text[i] - '0'), 0, 8, 8), Color.White);
 
 			}
 		}
 		public void DrawNumbers(int num, int x, int y, SpriteBatch spriteBatch)
 		{
-			string text = num.ToString();
-			DrawNumbers(text, x, y, spriteBatch);
+			DrawNumbers(num.ToString(), x, y, spriteBatch);
 		}
 		public void DrawNumbersLeft(int num, int x, int y, SpriteBatch spriteBatch)
 		{
-			string text = num.ToString();
-			DrawNumbersLeft(text, x, y, spriteBatch);
+			DrawNumbersLeft(num.ToString(), x, y, spriteBatch);
 		}
 
 	}

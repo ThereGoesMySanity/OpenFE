@@ -4,12 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace OpenFE
 {
-	public class MapState : GameState
+	public class Cutscene : GameState
 	{
-		Map map;
-		public MapState(Map m)
+		public Cutscene()
 		{
-			map = m;
 		}
 
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Font f, GUI gui)

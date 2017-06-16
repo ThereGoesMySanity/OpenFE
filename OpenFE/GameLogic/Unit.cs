@@ -46,10 +46,11 @@ namespace OpenFE
 				return Math.Max(0, Stats["Spd"].getValue() - Math.Max(0, Weapon.Stats["Wt"] - Stats["Con"].getValue()));
 			}
 		}
-		public Unit(string file, string weapon)
+		public Unit(string file, string weapon, string type)
 		{
 			Stats = new Dictionary<string, Stat>();
 			Proficiency = new Dictionary<string, int>();
+			Type = type;
 			foreach (string w in Weapon.WeaponType.Keys)
 			{
 				Proficiency.Add(w, 0);
@@ -69,7 +70,6 @@ namespace OpenFE
 							switch (i)
 							{
 								case 0:
-									Console.WriteLine(ss);
 									Stats.Add(ss[0], 
 									          new Stat(ss[0], Int32.Parse(ss[1])));
 									break;
